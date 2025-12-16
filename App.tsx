@@ -148,55 +148,92 @@ export const App = () => {
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full max-w-7xl">
             {/* Game Images from Assets */}
             {[
-              'File2.webp', 'File3.webp', 'File4.webp', 'File5.svg', 'File6.svg',
-              'File7.svg', 'File8.webp', 'File9.webp', 'File10.webp', 'File11.webp',
-              'File12.webp', 'File13.webp', 'File14.webp', 'File15.webp', 'File16.webp',
-              'File17.webp', 'File18.webp', 'File19.webp', 'File20.svg', 'File21.svg',
-              'File22.svg', 'File23.svg', 'File24.svg', 'File25.svg', 'File26.webp',
-              'File27.webp', 'File28.webp', 'File29.webp', 'File30.webp', 'File31.webp',
-              'File32.webp', 'File33.webp', 'File34.webp', 'File35.webp', 'File36.webp',
-              'File37.webp', 'File38.webp', 'File39.webp', 'File40.webp', 'File41.webp',
-              'File42.webp', 'File43.webp', 'File44.webp', 'File45.webp', 'File46.webp',
-              'File47.webp', 'File48.svg', 'File49.webp', 'File50.webp', 'File51.webp',
-              'File52.webp', 'File53.webp', 'File54.webp', 'File55.webp', 'File56.webp',
-              'File57.svg', 'File58.svg', 'File59.svg', 'File60.svg', 'File61.webp',
-              'File62.svg', 'File63.svg'
-            ].map((imageFile, index) => {
-              // Map first few to game modes, rest to FISH mode
-              let onClickHandler = () => setMode(GameMode.FISH);
-              let gameName = `Game ${index + 1}`;
-              
-              if (index === 0) {
-                onClickHandler = () => setMode(GameMode.FISH);
-                gameName = 'Ocean King';
-              } else if (index === 1) {
-                onClickHandler = () => setMode(GameMode.SLOTS);
-                gameName = 'Dragon Slots';
-              } else if (index === 2) {
-                onClickHandler = () => setMode(GameMode.CREATIVE);
-                gameName = 'Nano Studio';
-              }
-              
+              { file: 'File2.webp', name: 'Ocean King', mode: GameMode.FISH },
+              { file: 'File3.webp', name: 'Dragon Slots', mode: GameMode.SLOTS },
+              { file: 'File4.webp', name: 'Nano Studio', mode: GameMode.CREATIVE },
+              { file: 'File5.svg', name: 'Red Hot Chili 7s', mode: GameMode.SLOTS },
+              { file: 'File6.svg', name: 'Royal 40 Fruits', mode: GameMode.SLOTS },
+              { file: 'File7.svg', name: 'Shining Princess', mode: GameMode.SLOTS },
+              { file: 'File8.webp', name: 'Space Rocks', mode: GameMode.SLOTS },
+              { file: 'File9.webp', name: 'Thunder Strike', mode: GameMode.SLOTS },
+              { file: 'File10.webp', name: 'Wild Buffalo', mode: GameMode.SLOTS },
+              { file: 'File11.webp', name: 'Wolf Reels', mode: GameMode.SLOTS },
+              { file: 'File12.webp', name: 'Volcano Fruits', mode: GameMode.SLOTS },
+              { file: 'File13.webp', name: 'Lucky 777', mode: GameMode.SLOTS },
+              { file: 'File14.webp', name: 'Golden Dragon', mode: GameMode.SLOTS },
+              { file: 'File15.webp', name: 'Fire Kirin', mode: GameMode.FISH },
+              { file: 'File16.webp', name: 'Mega Fortune', mode: GameMode.SLOTS },
+              { file: 'File17.webp', name: 'Crystal Quest', mode: GameMode.SLOTS },
+              { file: 'File18.webp', name: 'Treasure Island', mode: GameMode.FISH },
+              { file: 'File19.webp', name: 'Magic Forest', mode: GameMode.SLOTS },
+              { file: 'File20.svg', name: 'Star Quest', mode: GameMode.SLOTS },
+              { file: 'File21.svg', name: 'Diamond Rush', mode: GameMode.SLOTS },
+              { file: 'File22.svg', name: 'Pirate Gold', mode: GameMode.SLOTS },
+              { file: 'File23.svg', name: 'Phoenix Rising', mode: GameMode.SLOTS },
+              { file: 'File24.svg', name: 'Neon Nights', mode: GameMode.SLOTS },
+              { file: 'File25.svg', name: 'Cosmic Win', mode: GameMode.SLOTS },
+              { file: 'File26.webp', name: 'Jungle Adventure', mode: GameMode.FISH },
+              { file: 'File27.webp', name: 'Mystic Moon', mode: GameMode.SLOTS },
+              { file: 'File28.webp', name: 'Desert Storm', mode: GameMode.SLOTS },
+              { file: 'File29.webp', name: 'Ice Kingdom', mode: GameMode.SLOTS },
+              { file: 'File30.webp', name: 'Tropical Paradise', mode: GameMode.SLOTS },
+              { file: 'File31.webp', name: 'Ancient Temple', mode: GameMode.SLOTS },
+              { file: 'File32.webp', name: 'Cyber City', mode: GameMode.SLOTS },
+              { file: 'File33.webp', name: 'Fantasy Realm', mode: GameMode.SLOTS },
+              { file: 'File34.webp', name: 'Ocean Depths', mode: GameMode.FISH },
+              { file: 'File35.webp', name: 'Sky High', mode: GameMode.SLOTS },
+              { file: 'File36.webp', name: 'Underground', mode: GameMode.SLOTS },
+              { file: 'File37.webp', name: 'Mountain Peak', mode: GameMode.SLOTS },
+              { file: 'File38.webp', name: 'River Flow', mode: GameMode.FISH },
+              { file: 'File39.webp', name: 'Crystal Cave', mode: GameMode.SLOTS },
+              { file: 'File40.webp', name: 'Sunset Valley', mode: GameMode.SLOTS },
+              { file: 'File41.webp', name: 'Midnight Express', mode: GameMode.SLOTS },
+              { file: 'File42.webp', name: 'Aurora Lights', mode: GameMode.SLOTS },
+              { file: 'File43.webp', name: 'Storm Chaser', mode: GameMode.SLOTS },
+              { file: 'File44.webp', name: 'Wind Rider', mode: GameMode.SLOTS },
+              { file: 'File45.webp', name: 'Flame Keeper', mode: GameMode.SLOTS },
+              { file: 'File46.webp', name: 'Water Spirit', mode: GameMode.FISH },
+              { file: 'File47.webp', name: 'Earth Guardian', mode: GameMode.SLOTS },
+              { file: 'File48.svg', name: 'Light Warrior', mode: GameMode.SLOTS },
+              { file: 'File49.webp', name: 'Shadow Hunter', mode: GameMode.SLOTS },
+              { file: 'File50.webp', name: 'Dragon Master', mode: GameMode.SLOTS },
+              { file: 'File51.webp', name: 'Knight Quest', mode: GameMode.SLOTS },
+              { file: 'File52.webp', name: 'Wizard Tower', mode: GameMode.SLOTS },
+              { file: 'File53.webp', name: 'Castle Siege', mode: GameMode.SLOTS },
+              { file: 'File54.webp', name: 'Kingdom Rush', mode: GameMode.SLOTS },
+              { file: 'File55.webp', name: 'Empire Builder', mode: GameMode.SLOTS },
+              { file: 'File56.webp', name: 'Legend Quest', mode: GameMode.SLOTS },
+              { file: 'File57.svg', name: 'Hero Journey', mode: GameMode.SLOTS },
+              { file: 'File58.svg', name: 'Epic Battle', mode: GameMode.SLOTS },
+              { file: 'File59.svg', name: 'Final Boss', mode: GameMode.SLOTS },
+              { file: 'File60.svg', name: 'Victory Lap', mode: GameMode.SLOTS },
+              { file: 'File61.webp', name: 'Champion', mode: GameMode.SLOTS },
+              { file: 'File62.svg', name: 'Grand Prize', mode: GameMode.SLOTS },
+              { file: 'File63.svg', name: 'Jackpot King', mode: GameMode.SLOTS },
+            ].map((game, index) => {
               return (
                 <button
-                  key={imageFile}
-                  onClick={onClickHandler}
+                  key={game.file}
+                  onClick={() => setMode(game.mode)}
                   className="group relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border-2 border-slate-700/50 overflow-hidden hover:scale-105 hover:border-cyan-500/50 transition duration-300 shadow-lg hover:shadow-cyan-500/20"
                 >
                   <div className="absolute inset-0">
                     <img 
-                      src={`/assets/${imageFile}`} 
-                      alt={gameName}
+                      src={`/assets/${game.file}`} 
+                      alt={game.name}
                       className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                      loading="lazy"
                       onError={(e) => {
-                        (e.target as HTMLImageElement).src = 'https://via.placeholder.com/300x200?text=Game';
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
+                        target.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-slate-800 text-gray-500 text-xs">Image not found</div>';
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent"></div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
                   </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-3">
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider arcade-font text-center drop-shadow-lg">
-                      {gameName}
+                  <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
+                    <h3 className="text-sm font-bold text-white uppercase tracking-wider arcade-font text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
+                      {game.name}
                     </h3>
                   </div>
                 </button>
