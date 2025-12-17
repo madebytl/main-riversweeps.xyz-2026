@@ -143,6 +143,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [progress, setProgress] = useState(0);
   const [showToast, setShowToast] = useState(false);
+  const [showPendingVerification, setShowPendingVerification] = useState(false);
 
   // Stats & Ticker
   const [onlineCount, setOnlineCount] = useState(1420);
@@ -447,6 +448,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const handleFinalVerify = () => {
     playSound("click");
     setStage("verifying");
+    setShowPendingVerification(true);
     if (typeof (window as any)._JF === "function") {
       (window as any)._JF();
       setTimeout(() => {
@@ -519,6 +521,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                 <span className="text-green-400 font-bold">{selectedGame}</span>
                 ...
               </p>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* --- PENDING VERIFICATION TOAST (Bottom) - Stays until locker completes and page closes --- */}
+      {showPendingVerification && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[10000] w-[90%] max-w-sm">
+          <div className="bg-gradient-to-r from-amber-900/95 via-yellow-900/95 to-amber-900/95 backdrop-blur-md border border-amber-500/50 rounded-xl px-3 py-2.5 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-amber-500/30 flex items-center justify-center shrink-0 border border-amber-400/50">
+                <Loader2 className="w-4 h-4 text-amber-300 animate-spin" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+                  <h4 className="text-white font-bold uppercase text-[10px] md:text-xs tracking-wider">
+                    PENDING VERIFICATION
+                  </h4>
+                </div>
+                <p className="text-amber-100 text-[10px] md:text-xs leading-tight">
+                  Complete security verification to release your bonus prizes.
+                </p>
+              </div>
             </div>
           </div>
         </div>
@@ -938,6 +964,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                                 0% { transform: translate(-50%, -50%) scale(0); opacity: 1; }
                                 15% { transform: translate(calc(-50% + var(--tx) * 0.15), calc(-50% + var(--ty) * 0.15)) scale(1.5); opacity: 1; }
                                 100% { transform: translate(calc(-50% + var(--tx)), calc(-50% + var(--ty))) scale(0); opacity: 0; }
+                            }
+                            @keyframes progress {
+                                0% { width: 0%; }
+                                50% { width: 70%; }
+                                100% { width: 100%; }
                             }
                         `}</style>
               <div className="text-center mb-6">

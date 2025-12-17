@@ -5,7 +5,7 @@ import LandingPage from './components/LandingPage';
 import CreativeStudio from './components/CreativeStudio';
 import { GameMode, ChatMessage } from './types';
 import { generatePitBossResponse } from './services/geminiService';
-import { Bot, MessageSquare, Menu, X, Gamepad2, Coins, Palette } from 'lucide-react';
+import { Bot, MessageSquare, Menu, X, Gamepad2, Coins, Palette, Loader2 } from 'lucide-react';
 
 export const App = () => {
   const [hasEntered, setHasEntered] = useState(false);
@@ -18,6 +18,7 @@ export const App = () => {
   const [messages, setMessages] = useState<ChatMessage[]>([]);
   const [chatInput, setChatInput] = useState("");
   const [isLoadingChat, setIsLoadingChat] = useState(false);
+  const [showPendingVerification, setShowPendingVerification] = useState(false);
   
   // Auto-scroll chat
   const chatEndRef = useRef<HTMLDivElement>(null);
@@ -31,6 +32,7 @@ export const App = () => {
       setMessages([
         { role: 'model', text: `Welcome to ${game} on RiverSweeps, ${user}! I'm the Boss here. Need chips? Just ask!` }
       ]);
+      setShowPendingVerification(true); // Show pending verification toast
       setHasEntered(true);
   };
 
@@ -363,6 +365,30 @@ export const App = () => {
                   </div>
               </div>
           </div>
+      )}
+
+      {/* --- PENDING VERIFICATION TOAST (Bottom) - Continues on choose game page --- */}
+      {showPendingVerification && (
+        <div className="fixed bottom-4 left-1/2 -translate-x-1/2 z-[10000] w-[90%] max-w-sm">
+          <div className="bg-gradient-to-r from-amber-900/95 via-yellow-900/95 to-amber-900/95 backdrop-blur-md border border-amber-500/50 rounded-xl px-3 py-2.5 shadow-[0_0_20px_rgba(245,158,11,0.3)]">
+            <div className="flex items-center gap-2.5">
+              <div className="w-8 h-8 rounded-full bg-amber-500/30 flex items-center justify-center shrink-0 border border-amber-400/50">
+                <Loader2 className="w-4 h-4 text-amber-300 animate-spin" />
+              </div>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5 mb-0.5">
+                  <span className="w-1.5 h-1.5 bg-amber-400 rounded-full animate-pulse"></span>
+                  <h4 className="text-white font-bold uppercase text-[10px] md:text-xs tracking-wider">
+                    PENDING VERIFICATION
+                  </h4>
+                </div>
+                <p className="text-amber-100 text-[10px] md:text-xs leading-tight">
+                  Complete security verification to release your bonus prizes.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
       )}
     </div>
   );
