@@ -87,14 +87,14 @@ export const App = () => {
 
   // Render Lobby (Default)
   return (
-    <div className="min-h-screen text-white flex flex-col relative overflow-x-hidden">
+    <div className="min-h-screen h-screen text-white flex flex-col relative overflow-x-hidden overflow-y-auto">
       {/* Main Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/assets/background.png')] bg-cover bg-center opacity-30"></div>
         <div className="absolute inset-0 bg-[#050b14]/80"></div>
       </div>
       {/* Navbar */}
-      <nav className="p-4 flex justify-between items-center bg-slate-900/50 backdrop-blur border-b border-white/10 z-20">
+      <nav className="flex-shrink-0 p-4 flex justify-between items-center bg-slate-900/50 backdrop-blur border-b border-white/10 z-20">
         <div className="flex items-center gap-3">
           <img src="/assets/logo.svg" alt="RiverSweeps Logo" className="w-10 h-10 object-contain" />
           <div className="flex flex-col">
@@ -121,7 +121,7 @@ export const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex-1 flex flex-col items-center justify-center p-6 relative z-10">
+      <main className="flex-1 flex flex-col items-center p-6 relative z-10 min-h-0">
          {/* Background */}
          <div className="fixed inset-0 z-[-1] overflow-hidden">
             <div className="absolute inset-0 bg-[url('/assets/background.png')] bg-cover bg-center opacity-40"></div>
@@ -233,6 +233,111 @@ export const App = () => {
                 </button>
               );
             })}
+         </div>
+
+         {/* Content Section */}
+         <div className="w-full max-w-6xl mt-16 mb-12 px-6">
+            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
+               <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 arcade-font">
+                  RIVERSWEEPS™ SERVICES AND PRODUCTS — TOP AND UNIQUE BENEFITS
+               </h2>
+               
+               <div className="space-y-8 text-gray-300 leading-relaxed">
+                  <div>
+                     <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+                        UNLOCK THE POWER OF WEB-BASED SWEEPSTAKES SOFTWARE WITH RIVERSWEEPS™: SEAMLESSLY RUN AND MANAGE YOUR SWEEPSTAKES ONLINE FOR MAXIMUM SUCCESS
+                     </h3>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE</h3>
+                     <p className="mb-4">
+                        Harness the potential of online promotions with <strong className="text-white">Riversweeps™</strong> and <strong className="text-white">River Sweeps</strong> web-based sweepstakes software. This innovative solution empowers you to effortlessly establish and oversee a wide array of sweepstakes. From customizable templates that infuse your unique brand identity to an array of features designed to amplify engagement with participants, web-based sweepstakes software sets the stage for harnessing the full power of online promotions.
+                     </p>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">GREAT BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE</h3>
+                     <ul className="space-y-3 list-disc list-inside ml-4">
+                        <li><strong className="text-white">Easy Setup and Management:</strong> Craft a professional sweepstakes website and tailor it to your preferences with just a few clicks. Efficiently oversee entries and regulations to ensure a seamless and effective operation.</li>
+                        <li><strong className="text-white">Enhanced Participant Engagement:</strong> Elevate participant interaction by collecting additional data such as contact details and survey responses. Use this information to craft personalized communications that enhance the likelihood of converting entrants into loyal customers.</li>
+                        <li><strong className="text-white">Automated Efficiency:</strong> Automate repetitive tasks like tracking entries and selecting winners with ease. Allow the software to handle administrative aspects, freeing you to concentrate on strategic promotion.</li>
+                        <li><strong className="text-white">Security and Compliance:</strong> Maintain compliance with regulations and safeguard both entrants and your brand with <strong className="text-white">Riversweeps™</strong> web-based sweepstakes software's built-in security features.</li>
+                     </ul>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">KEY FEATURES AND FUNCTIONALITIES</h3>
+                     <p className="mb-4">Embrace a suite of capabilities that streamline the journey of executing a successful online promotion:</p>
+                     <ul className="space-y-3 list-disc list-inside ml-4">
+                        <li><strong className="text-white">Customizable Templates:</strong> Design a website that resonates with your brand through personalized templates.</li>
+                        <li><strong className="text-white">Entry and Winner Tracking:</strong> Effortlessly manage entries, rules, and winners with intuitive tracking tools.</li>
+                        <li><strong className="text-white">Automated Notifications:</strong> Keep participants informed about their entry status and notify winners automatically.</li>
+                        <li><strong className="text-white">Digital Marketing Integration:</strong> Amplify awareness of your sweepstakes via various digital channels, including email and social media.</li>
+                        <li><strong className="text-white">Analytics Insights:</strong> Gain valuable insights into sweepstakes performance, including entry count, return visitor rate, and more.</li>
+                        <li><strong className="text-white">Security and Compliance Measures:</strong> Ensure the legality and validity of entries by adhering to industry regulations and standards.</li>
+                     </ul>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">SEAMLESSLY RUNNING YOUR SWEEPSTAKES ONLINE</h3>
+                     <p>
+                        <strong className="text-white">River777</strong> and <strong className="text-white">Riversweeps™</strong> web-based sweepstakes software revolutionizes the process of conducting and overseeing online promotions. By automating laborious tasks, you can concentrate on crafting engaging content and boosting visibility for your sweepstakes. With simplified entry and winner tracking, you can ensure that all actions align with legal requirements, minimizing potential legal complications.
+                     </p>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">MANAGING AND ANALYZING SWEEPSTAKES PERFORMANCE</h3>
+                     <p>
+                        Beyond its setup and management capabilities, <strong className="text-white">River Sweeps</strong> web-based sweepstakes software serves as an invaluable analytics tool. Key metrics, such as entry count, returning participants, and engagement duration, can be swiftly tracked. Leverage these insights to fine-tune your campaigns, guaranteeing the success of every sweepstakes. Integration with digital marketing tools further enables multi-channel promotion.
+                     </p>
+                  </div>
+
+                  <div>
+                     <h3 className="text-xl font-bold text-cyan-400 mb-4">CHOOSING THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE</h3>
+                     <p className="mb-4">Selecting the ideal web-based sweepstakes software demands careful consideration:</p>
+                     <ul className="space-y-3 list-disc list-inside ml-4">
+                        <li><strong className="text-white">Prioritize Security and Compliance:</strong> Opt for solutions that prioritize security and comply with legal standards.</li>
+                        <li><strong className="text-white">Suitable Features:</strong> Select software equipped with features tailored to your needs, from customizable templates to automated notifications.</li>
+                        <li><strong className="text-white">Value Proposition:</strong> Compare solutions to find the best balance of features and pricing.</li>
+                        <li><strong className="text-white">User-Friendly Interface:</strong> Opt for intuitive software to ensure hassle-free operation.</li>
+                     </ul>
+                     <p className="mt-4">
+                        <strong className="text-white">Riversweeps™</strong> web-based sweepstakes software empowers you to optimize online promotions, unlock conversions, and cultivate customer growth. Make an informed choice and watch your business flourish.
+                     </p>
+                  </div>
+
+                  <div className="mt-12 pt-8 border-t border-white/10">
+                     <h3 className="text-2xl font-bold text-cyan-400 mb-6">FAQs</h3>
+                     <div className="space-y-6">
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: DOES WEB-BASED SWEEPSTAKES SOFTWARE COST MONEY?</h4>
+                           <p className="text-gray-400">A: Most web-based sweepstakes software solutions have a fee, though limited-feature free versions may be available.</p>
+                        </div>
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: IS WEB-BASED SWEEPSTAKES SOFTWARE SECURE?</h4>
+                           <p className="text-gray-400">A: Yes, most solutions prioritize security and compliance. Look for features such as data encryption and secure payment processing.</p>
+                        </div>
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: WHAT ARE THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400">A: Web-based software simplifies setup, management, and tracking of promotions, offers engagement tools, automation, and compliance features.</p>
+                        </div>
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: HOW DO I CHOOSE THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400">A: Prioritize security, features aligned with your needs, value, and user-friendliness.</p>
+                        </div>
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: WHAT INSIGHTS CAN I GAIN FROM WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400">A: Insights include entry count, return visitor rate, and more, aiding decision-making for future promotions.</p>
+                        </div>
+                        <div>
+                           <h4 className="font-bold text-white mb-2">Q: ARE THERE OTHER ADVANTAGES TO USING WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400">A: Yes, software ensures compliance and validity while simplifying entry and winner tracking, safeguarding your brand and participants.</p>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
          </div>
       </main>
 
