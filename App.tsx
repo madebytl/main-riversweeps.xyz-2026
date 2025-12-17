@@ -221,7 +221,7 @@ export const App = () => {
                     <img 
                       src={`/assets/${game.file}`} 
                       alt={game.name}
-                      className="w-full h-full object-cover opacity-80 group-hover:opacity-100 transition duration-300"
+                      className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-300"
                       loading="lazy"
                       onError={(e) => {
                         const target = e.target as HTMLImageElement;
@@ -229,12 +229,6 @@ export const App = () => {
                         target.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-slate-800 text-gray-500 text-xs">Image not found</div>';
                       }}
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent"></div>
-                  </div>
-                  <div className="absolute bottom-0 left-0 right-0 p-3 z-10">
-                    <h3 className="text-sm font-bold text-white uppercase tracking-wider arcade-font text-center drop-shadow-[0_2px_4px_rgba(0,0,0,0.8)]">
-                      {game.name}
-                    </h3>
                   </div>
                 </button>
               );

@@ -600,7 +600,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
               <div className="text-center mb-8 relative group cursor-default">
                 <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-blue-500/20 blur-xl rounded-full group-hover:bg-blue-500/30 transition"></div>
                 <h3 className="text-white text-xs font-bold uppercase tracking-[0.2em] mb-1 relative z-10 text-cyan-200">
-                  Exclusive Reward Available
+                  🎰 INSTANT WIN BONUS - CLAIM NOW! 🎰
                 </h3>
                 <div className="text-5xl font-black text-transparent bg-clip-text bg-gradient-to-b from-yellow-300 to-yellow-600 drop-shadow-sm font-mono relative z-10 tracking-tighter">
                   {formatDisplayPrize(idleRewardDisplay)}
@@ -1087,14 +1087,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
               </div>
             </div>
           )}
-        </div>
-
-        {/* Footer */}
-        <div className="mt-8 text-center opacity-40 hover:opacity-100 transition-opacity">
-          <p className="text-[10px] text-white font-mono">
-            SESSION ID: {Math.random().toString(36).substr(2, 8).toUpperCase()}{" "}
-            • NODE: {REGION_CONFIG[region].name}
-          </p>
         </div>
       </div>
     </div>
