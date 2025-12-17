@@ -163,6 +163,25 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const [tickerItem, setTickerItem] = useState(generateRandomActivity());
   const [showTicker, setShowTicker] = useState(true);
   const [accountPIN, setAccountPIN] = useState<string>(""); // Account PIN in format xx-xx-xx-xx-xx-xx
+  
+  // Initialize timer from localStorage or create new one
+  const getInitialTimeLeft = (): number => {
+    const storedEndTime = localStorage.getItem('limitedOfferEndTime');
+    if (storedEndTime) {
+      const endTime = parseInt(storedEndTime, 10);
+      const now = Date.now();
+      const remaining = Math.max(0, Math.floor((endTime - now) / 1000));
+      if (remaining > 0) {
+        return remaining;
+      }
+    }
+    // Create new timer - 30 minutes from now
+    const newEndTime = Date.now() + (30 * 60 * 1000);
+    localStorage.setItem('limitedOfferEndTime', newEndTime.toString());
+    return 1800;
+  };
+  
+  const [timeLeft, setTimeLeft] = useState(getInitialTimeLeft);
 
   const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -267,10 +286,35 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
       });
     }, 4000);
 
+    // 5. Limited Offer Countdown Timer (Dynamic - persists across refreshes)
+    const countdownTimer = setInterval(() => {
+      const storedEndTime = localStorage.getItem('limitedOfferEndTime');
+      if (storedEndTime) {
+        const endTime = parseInt(storedEndTime, 10);
+        const now = Date.now();
+        const remaining = Math.max(0, Math.floor((endTime - now) / 1000));
+        
+        if (remaining <= 0) {
+          // Timer expired, create new one
+          const newEndTime = Date.now() + (30 * 60 * 1000);
+          localStorage.setItem('limitedOfferEndTime', newEndTime.toString());
+          setTimeLeft(1800);
+        } else {
+          setTimeLeft(remaining);
+        }
+      } else {
+        // No stored time, create new one
+        const newEndTime = Date.now() + (30 * 60 * 1000);
+        localStorage.setItem('limitedOfferEndTime', newEndTime.toString());
+        setTimeLeft(1800);
+      }
+    }, 1000);
+
     return () => {
       clearInterval(interval);
       clearInterval(tickerInterval);
       clearInterval(slotsTimer);
+      clearInterval(countdownTimer);
       if (rewardInterval) clearInterval(rewardInterval);
     };
   }, [stage, tickerItem]);
@@ -503,6 +547,13 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
     return prize;
   };
 
+  // Format countdown timer (MM:SS)
+  const formatTime = (seconds: number): string => {
+    const mins = Math.floor(seconds / 60);
+    const secs = seconds % 60;
+    return `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+  };
+
   return (
     <div className="min-h-screen bg-[#050b14] flex flex-col items-center justify-center relative overflow-hidden font-sans p-4 selection:bg-cyan-500/30">
       {/* --- DYNAMIC BACKGROUND --- */}
@@ -622,6 +673,30 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                   <span className="text-[10px] text-red-400 font-bold uppercase animate-pulse">
                     Live
                   </span>
+                </div>
+              </div>
+
+              {/* Limited Offer Banner */}
+              <div className="mb-5 relative overflow-hidden">
+                <div className="bg-gradient-to-r from-red-900/40 via-orange-900/40 to-red-900/40 border-2 border-red-500/50 rounded-xl p-3 backdrop-blur-sm relative">
+                  <div className="absolute inset-0 bg-gradient-to-r from-transparent via-red-500/10 to-transparent animate-[shimmer_2s_infinite]"></div>
+                  <div className="flex items-center justify-between relative z-10">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse shadow-[0_0_10px_rgba(239,68,68,0.8)]"></div>
+                      <span className="text-[10px] font-black uppercase tracking-wider text-red-400">
+                        Limited Offer
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-black/50 px-3 py-1.5 rounded-lg border border-red-500/30">
+                      <Timer className="w-3.5 h-3.5 text-red-400" />
+                      <span className="text-sm font-mono font-black text-red-400 tabular-nums">
+                        {formatTime(timeLeft)}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-[9px] text-red-300/80 mt-2 text-center font-bold relative z-10">
+                    ⚡ Only {slotsLeft} slots remaining at this bonus rate!
+                  </p>
                 </div>
               </div>
 
