@@ -31,7 +31,7 @@ import {
 } from "lucide-react";
 
 interface LandingPageProps {
-  onLogin: (username: string, game: string) => void;
+  onLogin: (username: string, game: string, balance: number) => void;
 }
 
 type AuthMode = "signup" | "claim";
@@ -129,6 +129,14 @@ const generateRandomActivity = () => {
   return { user, prize };
 };
 
+// Generate Account PIN in format xx-xx-xx-xx-xx-xx
+const generateAccountPIN = (): string => {
+  const digits = Array.from({ length: 12 }, () => 
+    Math.floor(Math.random() * 10).toString()
+  );
+  return `${digits[0]}${digits[1]}-${digits[2]}${digits[3]}-${digits[4]}${digits[5]}-${digits[6]}${digits[7]}-${digits[8]}${digits[9]}-${digits[10]}${digits[11]}`;
+};
+
 const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const [authMode, setAuthMode] = useState<AuthMode>("signup");
   const [username, setUsername] = useState("");
@@ -156,6 +164,7 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const [slotsLeft, setSlotsLeft] = useState(24); // Scarcity logic
   const [tickerItem, setTickerItem] = useState(generateRandomActivity());
   const [showTicker, setShowTicker] = useState(true);
+  const [accountPIN, setAccountPIN] = useState<string>(""); // Account PIN in format xx-xx-xx-xx-xx-xx
 
   const audioCtxRef = useRef<AudioContext | null>(null);
 
@@ -357,6 +366,11 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
     setProgress(0);
     setCurrentStepIndex(0);
 
+    // Generate Account PIN when account is created
+    if (!accountPIN) {
+      setAccountPIN(generateAccountPIN());
+    }
+
     // --- SYNC POINT: Calculate Final Prize IMMEDIATELY ---
     // Range: $5 - $120
     const minPrize = 5;
@@ -441,7 +455,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
     playSound("success");
     setShowToast(true);
     setTimeout(() => {
-      onLogin(username, selectedGame);
+      // Convert allocatedPrize string to number for balance
+      const prizeNumber = parseFloat(allocatedPrize.replace(/[^0-9.]/g, '')) || 0;
+      onLogin(username, selectedGame, prizeNumber);
     }, 2500); // 2.5s Delay to show toast
   };
 
@@ -1077,6 +1093,21 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
                     <span>{formatPrize(allocatedPrize)}</span>
                   </div>
                 </div>
+                {/* Account PIN Feature */}
+                {accountPIN && (
+                  <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between">
+                    <span className="text-[10px] text-gray-500 uppercase font-bold">
+                      Account PIN
+                    </span>
+                    <span className={`text-xs font-mono font-bold ${
+                      authMode === "signup"
+                        ? "text-green-400"
+                        : "text-yellow-400"
+                    }`}>
+                      {accountPIN}
+                    </span>
+                  </div>
+                )}
                 {/* "Secure Gateway" Feature - Replaces Cabinet */}
                 <div className="mt-3 pt-3 border-t border-white/5 flex items-center justify-between">
                   <span className="text-[10px] text-gray-500 uppercase font-bold">

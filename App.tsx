@@ -26,9 +26,10 @@ export const App = () => {
     chatEndRef.current?.scrollIntoView({ behavior: 'smooth' });
   }, [messages]);
 
-  const handleLogin = (user: string, game: string) => {
+  const handleLogin = (user: string, game: string, balance: number) => {
       setUsername(user);
       setSelectedGame(game);
+      setBalance(balance); // Sync balance from winning prize
       setMessages([
         { role: 'model', text: `Welcome to ${game} on RiverSweeps, ${user}! I'm the Boss here. Need chips? Just ask!` }
       ]);
