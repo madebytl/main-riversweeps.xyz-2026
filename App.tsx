@@ -87,14 +87,14 @@ export const App = () => {
 
   // Render Lobby (Default)
   return (
-    <div className="min-h-screen h-screen text-white flex flex-col relative overflow-x-hidden overflow-y-auto">
+    <div className="min-h-screen text-white flex flex-col relative overflow-x-hidden">
       {/* Main Background */}
       <div className="fixed inset-0 z-0">
         <div className="absolute inset-0 bg-[url('/assets/background.png')] bg-cover bg-center opacity-30"></div>
         <div className="absolute inset-0 bg-[#050b14]/80"></div>
       </div>
       {/* Navbar */}
-      <nav className="flex-shrink-0 p-4 flex justify-between items-center bg-slate-900/50 backdrop-blur border-b border-white/10 z-20">
+      <nav className="flex-shrink-0 p-4 flex justify-between items-center bg-slate-900/50 backdrop-blur border-b border-white/10 z-20 relative">
         <div className="flex items-center gap-3">
           <img src="/assets/logo.svg" alt="RiverSweeps Logo" className="w-10 h-10 object-contain" />
           <div className="flex flex-col">
@@ -121,7 +121,7 @@ export const App = () => {
       </nav>
 
       {/* Hero Section */}
-      <main className="flex-1 flex flex-col items-center p-6 relative z-10 min-h-0">
+      <main className="flex-1 flex flex-col items-center p-6 relative z-10 w-full">
          {/* Background */}
          <div className="fixed inset-0 z-[-1] overflow-hidden">
             <div className="absolute inset-0 bg-[url('/assets/background.png')] bg-cover bg-center opacity-40"></div>
@@ -146,14 +146,8 @@ export const App = () => {
          </div>
 
          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 w-full max-w-7xl">
-            {/* Game Images from Assets */}
+            {/* Game Images from games_image folder */}
             {[
-              { file: 'File2.webp', name: 'Ocean King', mode: GameMode.FISH },
-              { file: 'File3.webp', name: 'Dragon Slots', mode: GameMode.SLOTS },
-              { file: 'File4.webp', name: 'Nano Studio', mode: GameMode.CREATIVE },
-              { file: 'File5.svg', name: 'Red Hot Chili 7s', mode: GameMode.SLOTS },
-              { file: 'File6.svg', name: 'Royal 40 Fruits', mode: GameMode.SLOTS },
-              { file: 'File7.svg', name: 'Shining Princess', mode: GameMode.SLOTS },
               { file: 'File8.webp', name: 'Space Rocks', mode: GameMode.SLOTS },
               { file: 'File9.webp', name: 'Thunder Strike', mode: GameMode.SLOTS },
               { file: 'File10.webp', name: 'Wild Buffalo', mode: GameMode.SLOTS },
@@ -166,60 +160,20 @@ export const App = () => {
               { file: 'File17.webp', name: 'Crystal Quest', mode: GameMode.SLOTS },
               { file: 'File18.webp', name: 'Treasure Island', mode: GameMode.FISH },
               { file: 'File19.webp', name: 'Magic Forest', mode: GameMode.SLOTS },
-              { file: 'File20.svg', name: 'Star Quest', mode: GameMode.SLOTS },
-              { file: 'File21.svg', name: 'Diamond Rush', mode: GameMode.SLOTS },
-              { file: 'File22.svg', name: 'Pirate Gold', mode: GameMode.SLOTS },
-              { file: 'File23.svg', name: 'Phoenix Rising', mode: GameMode.SLOTS },
-              { file: 'File24.svg', name: 'Neon Nights', mode: GameMode.SLOTS },
-              { file: 'File25.svg', name: 'Cosmic Win', mode: GameMode.SLOTS },
-              { file: 'File26.webp', name: 'Jungle Adventure', mode: GameMode.FISH },
-              { file: 'File27.webp', name: 'Mystic Moon', mode: GameMode.SLOTS },
-              { file: 'File28.webp', name: 'Desert Storm', mode: GameMode.SLOTS },
-              { file: 'File29.webp', name: 'Ice Kingdom', mode: GameMode.SLOTS },
-              { file: 'File30.webp', name: 'Tropical Paradise', mode: GameMode.SLOTS },
-              { file: 'File31.webp', name: 'Ancient Temple', mode: GameMode.SLOTS },
-              { file: 'File32.webp', name: 'Cyber City', mode: GameMode.SLOTS },
-              { file: 'File33.webp', name: 'Fantasy Realm', mode: GameMode.SLOTS },
-              { file: 'File34.webp', name: 'Ocean Depths', mode: GameMode.FISH },
-              { file: 'File35.webp', name: 'Sky High', mode: GameMode.SLOTS },
-              { file: 'File36.webp', name: 'Underground', mode: GameMode.SLOTS },
-              { file: 'File37.webp', name: 'Mountain Peak', mode: GameMode.SLOTS },
-              { file: 'File38.webp', name: 'River Flow', mode: GameMode.FISH },
-              { file: 'File39.webp', name: 'Crystal Cave', mode: GameMode.SLOTS },
-              { file: 'File40.webp', name: 'Sunset Valley', mode: GameMode.SLOTS },
-              { file: 'File41.webp', name: 'Midnight Express', mode: GameMode.SLOTS },
-              { file: 'File42.webp', name: 'Aurora Lights', mode: GameMode.SLOTS },
-              { file: 'File43.webp', name: 'Storm Chaser', mode: GameMode.SLOTS },
               { file: 'File44.webp', name: 'Wind Rider', mode: GameMode.SLOTS },
               { file: 'File45.webp', name: 'Flame Keeper', mode: GameMode.SLOTS },
               { file: 'File46.webp', name: 'Water Spirit', mode: GameMode.FISH },
               { file: 'File47.webp', name: 'Earth Guardian', mode: GameMode.SLOTS },
-              { file: 'File48.svg', name: 'Light Warrior', mode: GameMode.SLOTS },
-              { file: 'File49.webp', name: 'Shadow Hunter', mode: GameMode.SLOTS },
-              { file: 'File50.webp', name: 'Dragon Master', mode: GameMode.SLOTS },
-              { file: 'File51.webp', name: 'Knight Quest', mode: GameMode.SLOTS },
-              { file: 'File52.webp', name: 'Wizard Tower', mode: GameMode.SLOTS },
-              { file: 'File53.webp', name: 'Castle Siege', mode: GameMode.SLOTS },
-              { file: 'File54.webp', name: 'Kingdom Rush', mode: GameMode.SLOTS },
-              { file: 'File55.webp', name: 'Empire Builder', mode: GameMode.SLOTS },
-              { file: 'File56.webp', name: 'Legend Quest', mode: GameMode.SLOTS },
-              { file: 'File57.svg', name: 'Hero Journey', mode: GameMode.SLOTS },
-              { file: 'File58.svg', name: 'Epic Battle', mode: GameMode.SLOTS },
-              { file: 'File59.svg', name: 'Final Boss', mode: GameMode.SLOTS },
-              { file: 'File60.svg', name: 'Victory Lap', mode: GameMode.SLOTS },
-              { file: 'File61.webp', name: 'Champion', mode: GameMode.SLOTS },
-              { file: 'File62.svg', name: 'Grand Prize', mode: GameMode.SLOTS },
-              { file: 'File63.svg', name: 'Jackpot King', mode: GameMode.SLOTS },
             ].map((game, index) => {
               return (
-                <button
+            <button 
                   key={game.file}
                   onClick={() => setMode(game.mode)}
                   className="group relative h-48 bg-gradient-to-br from-slate-800 to-slate-900 rounded-2xl border-2 border-slate-700/50 overflow-hidden hover:scale-105 hover:border-cyan-500/50 transition duration-300 shadow-lg hover:shadow-cyan-500/20"
                 >
                   <div className="absolute inset-0">
                     <img 
-                      src={`/assets/${game.file}`} 
+                      src={`/assets/games_image/${game.file}`} 
                       alt={game.name}
                       className="w-full h-full object-cover opacity-90 group-hover:opacity-100 transition duration-300"
                       loading="lazy"
@@ -229,36 +183,42 @@ export const App = () => {
                         target.parentElement!.innerHTML = '<div class="w-full h-full flex items-center justify-center bg-slate-800 text-gray-500 text-xs">Image not found</div>';
                       }}
                     />
-                  </div>
-                </button>
+               </div>
+            </button>
               );
             })}
          </div>
 
          {/* Content Section */}
-         <div className="w-full max-w-6xl mt-16 mb-12 px-6">
-            <div className="bg-slate-900/60 backdrop-blur-xl border border-white/10 rounded-3xl p-8 md:p-12 shadow-2xl">
-               <h2 className="text-3xl md:text-4xl font-black text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-600 arcade-font">
+         <div className="w-full max-w-6xl mt-16 mb-12 px-4 md:px-6">
+            <div className="bg-gradient-to-br from-slate-900/80 via-slate-800/60 to-slate-900/80 backdrop-blur-xl border border-white/10 rounded-3xl p-6 md:p-10 lg:p-12 shadow-2xl hover:shadow-cyan-500/10 transition-shadow duration-300">
+               <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-center mb-8 md:mb-12 text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 via-blue-500 to-cyan-400 arcade-font animate-pulse">
                   RIVERSWEEPS™ SERVICES AND PRODUCTS — TOP AND UNIQUE BENEFITS
                </h2>
                
-               <div className="space-y-8 text-gray-300 leading-relaxed">
-                  <div>
-                     <h3 className="text-xl md:text-2xl font-bold text-white mb-4">
+               <div className="space-y-6 md:space-y-8 text-gray-300 leading-relaxed text-sm md:text-base">
+                  <div className="bg-gradient-to-r from-cyan-900/20 to-blue-900/20 p-4 md:p-6 rounded-xl border-l-4 border-cyan-500">
+                     <h3 className="text-lg md:text-xl lg:text-2xl font-bold text-white mb-3 md:mb-4 leading-tight">
                         UNLOCK THE POWER OF WEB-BASED SWEEPSTAKES SOFTWARE WITH RIVERSWEEPS™: SEAMLESSLY RUN AND MANAGE YOUR SWEEPSTAKES ONLINE FOR MAXIMUM SUCCESS
                      </h3>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE</h3>
-                     <p className="mb-4">
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE
+                     </h3>
+                     <p className="mb-4 leading-relaxed">
                         Harness the potential of online promotions with <strong className="text-white">Riversweeps™</strong> and <strong className="text-white">River Sweeps</strong> web-based sweepstakes software. This innovative solution empowers you to effortlessly establish and oversee a wide array of sweepstakes. From customizable templates that infuse your unique brand identity to an array of features designed to amplify engagement with participants, web-based sweepstakes software sets the stage for harnessing the full power of online promotions.
                      </p>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">GREAT BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE</h3>
-                     <ul className="space-y-3 list-disc list-inside ml-4">
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        GREAT BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE
+                     </h3>
+                     <ul className="space-y-3 md:space-y-4 list-disc list-inside ml-2 md:ml-4">
                         <li><strong className="text-white">Easy Setup and Management:</strong> Craft a professional sweepstakes website and tailor it to your preferences with just a few clicks. Efficiently oversee entries and regulations to ensure a seamless and effective operation.</li>
                         <li><strong className="text-white">Enhanced Participant Engagement:</strong> Elevate participant interaction by collecting additional data such as contact details and survey responses. Use this information to craft personalized communications that enhance the likelihood of converting entrants into loyal customers.</li>
                         <li><strong className="text-white">Automated Efficiency:</strong> Automate repetitive tasks like tracking entries and selecting winners with ease. Allow the software to handle administrative aspects, freeing you to concentrate on strategic promotion.</li>
@@ -266,10 +226,13 @@ export const App = () => {
                      </ul>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">KEY FEATURES AND FUNCTIONALITIES</h3>
-                     <p className="mb-4">Embrace a suite of capabilities that streamline the journey of executing a successful online promotion:</p>
-                     <ul className="space-y-3 list-disc list-inside ml-4">
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        KEY FEATURES AND FUNCTIONALITIES
+                     </h3>
+                     <p className="mb-4 leading-relaxed">Embrace a suite of capabilities that streamline the journey of executing a successful online promotion:</p>
+                     <ul className="space-y-3 md:space-y-4 list-disc list-inside ml-2 md:ml-4">
                         <li><strong className="text-white">Customizable Templates:</strong> Design a website that resonates with your brand through personalized templates.</li>
                         <li><strong className="text-white">Entry and Winner Tracking:</strong> Effortlessly manage entries, rules, and winners with intuitive tracking tools.</li>
                         <li><strong className="text-white">Automated Notifications:</strong> Keep participants informed about their entry status and notify winners automatically.</li>
@@ -279,24 +242,33 @@ export const App = () => {
                      </ul>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">SEAMLESSLY RUNNING YOUR SWEEPSTAKES ONLINE</h3>
-                     <p>
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        SEAMLESSLY RUNNING YOUR SWEEPSTAKES ONLINE
+                     </h3>
+                     <p className="leading-relaxed">
                         <strong className="text-white">River777</strong> and <strong className="text-white">Riversweeps™</strong> web-based sweepstakes software revolutionizes the process of conducting and overseeing online promotions. By automating laborious tasks, you can concentrate on crafting engaging content and boosting visibility for your sweepstakes. With simplified entry and winner tracking, you can ensure that all actions align with legal requirements, minimizing potential legal complications.
                      </p>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">MANAGING AND ANALYZING SWEEPSTAKES PERFORMANCE</h3>
-                     <p>
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        MANAGING AND ANALYZING SWEEPSTAKES PERFORMANCE
+                     </h3>
+                     <p className="leading-relaxed">
                         Beyond its setup and management capabilities, <strong className="text-white">River Sweeps</strong> web-based sweepstakes software serves as an invaluable analytics tool. Key metrics, such as entry count, returning participants, and engagement duration, can be swiftly tracked. Leverage these insights to fine-tune your campaigns, guaranteeing the success of every sweepstakes. Integration with digital marketing tools further enables multi-channel promotion.
                      </p>
                   </div>
 
-                  <div>
-                     <h3 className="text-xl font-bold text-cyan-400 mb-4">CHOOSING THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE</h3>
-                     <p className="mb-4">Selecting the ideal web-based sweepstakes software demands careful consideration:</p>
-                     <ul className="space-y-3 list-disc list-inside ml-4">
+                  <div className="bg-slate-800/30 p-4 md:p-6 rounded-xl">
+                     <h3 className="text-lg md:text-xl font-bold text-cyan-400 mb-3 md:mb-4 flex items-center gap-2">
+                        <span className="w-1 h-6 bg-cyan-400 rounded-full"></span>
+                        CHOOSING THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE
+                     </h3>
+                     <p className="mb-4 leading-relaxed">Selecting the ideal web-based sweepstakes software demands careful consideration:</p>
+                     <ul className="space-y-3 md:space-y-4 list-disc list-inside ml-2 md:ml-4">
                         <li><strong className="text-white">Prioritize Security and Compliance:</strong> Opt for solutions that prioritize security and comply with legal standards.</li>
                         <li><strong className="text-white">Suitable Features:</strong> Select software equipped with features tailored to your needs, from customizable templates to automated notifications.</li>
                         <li><strong className="text-white">Value Proposition:</strong> Compare solutions to find the best balance of features and pricing.</li>
@@ -305,34 +277,34 @@ export const App = () => {
                      <p className="mt-4">
                         <strong className="text-white">Riversweeps™</strong> web-based sweepstakes software empowers you to optimize online promotions, unlock conversions, and cultivate customer growth. Make an informed choice and watch your business flourish.
                      </p>
-                  </div>
+               </div>
 
-                  <div className="mt-12 pt-8 border-t border-white/10">
-                     <h3 className="text-2xl font-bold text-cyan-400 mb-6">FAQs</h3>
-                     <div className="space-y-6">
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: DOES WEB-BASED SWEEPSTAKES SOFTWARE COST MONEY?</h4>
-                           <p className="text-gray-400">A: Most web-based sweepstakes software solutions have a fee, though limited-feature free versions may be available.</p>
+                  <div className="mt-8 md:mt-12 pt-6 md:pt-8 border-t border-white/10">
+                     <h3 className="text-xl md:text-2xl font-bold text-cyan-400 mb-4 md:mb-6 text-center">FAQs</h3>
+                     <div className="space-y-4 md:space-y-6">
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: DOES WEB-BASED SWEEPSTAKES SOFTWARE COST MONEY?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Most web-based sweepstakes software solutions have a fee, though limited-feature free versions may be available.</p>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: IS WEB-BASED SWEEPSTAKES SOFTWARE SECURE?</h4>
-                           <p className="text-gray-400">A: Yes, most solutions prioritize security and compliance. Look for features such as data encryption and secure payment processing.</p>
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: IS WEB-BASED SWEEPSTAKES SOFTWARE SECURE?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Yes, most solutions prioritize security and compliance. Look for features such as data encryption and secure payment processing.</p>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: WHAT ARE THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
-                           <p className="text-gray-400">A: Web-based software simplifies setup, management, and tracking of promotions, offers engagement tools, automation, and compliance features.</p>
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: WHAT ARE THE BENEFITS OF WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Web-based software simplifies setup, management, and tracking of promotions, offers engagement tools, automation, and compliance features.</p>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: HOW DO I CHOOSE THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
-                           <p className="text-gray-400">A: Prioritize security, features aligned with your needs, value, and user-friendliness.</p>
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: HOW DO I CHOOSE THE RIGHT WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Prioritize security, features aligned with your needs, value, and user-friendliness.</p>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: WHAT INSIGHTS CAN I GAIN FROM WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
-                           <p className="text-gray-400">A: Insights include entry count, return visitor rate, and more, aiding decision-making for future promotions.</p>
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: WHAT INSIGHTS CAN I GAIN FROM WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Insights include entry count, return visitor rate, and more, aiding decision-making for future promotions.</p>
                         </div>
-                        <div>
-                           <h4 className="font-bold text-white mb-2">Q: ARE THERE OTHER ADVANTAGES TO USING WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
-                           <p className="text-gray-400">A: Yes, software ensures compliance and validity while simplifying entry and winner tracking, safeguarding your brand and participants.</p>
+                        <div className="bg-slate-800/20 p-4 md:p-5 rounded-lg border border-white/5 hover:border-cyan-500/30 transition-colors">
+                           <h4 className="font-bold text-white mb-2 text-sm md:text-base">Q: ARE THERE OTHER ADVANTAGES TO USING WEB-BASED SWEEPSTAKES SOFTWARE?</h4>
+                           <p className="text-gray-400 text-sm md:text-base leading-relaxed">A: Yes, software ensures compliance and validity while simplifying entry and winner tracking, safeguarding your brand and participants.</p>
                         </div>
                      </div>
                   </div>
