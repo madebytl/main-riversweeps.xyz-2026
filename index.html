@@ -149,27 +149,6 @@
     ::-webkit-scrollbar-thumb:hover {
       background: #475569;
     }
-
-    /* Locker Script Vertical Centering */
-    /* Target locker modal/overlay containers */
-    body>div:not(#root)[style*="position: fixed"],
-    body>div:not(#root)[style*="z-index"],
-    iframe[src*="locker"],
-    iframe[src*="offer"],
-    iframe[src*="cloudfront"] {
-      position: fixed !important;
-      top: 50% !important;
-      left: 50% !important;
-      transform: translate(-50%, -50%) !important;
-    }
-
-    /* Ensure locker content is centered within its container */
-    [id*="locker"]>*,
-    [class*="locker"]>*,
-    [id*="offer"]>*,
-    [class*="offer"]>* {
-      margin: auto !important;
-    }
   </style>
 </head>
 
@@ -184,77 +163,6 @@
     };
   </script>
   <script src="https://duw03nk63ml3f.cloudfront.net/2d4d7dc.js"></script>
-  <!-- Locker Vertical Centering Script -->
-  <script>
-    (function () {
-      function centerLocker() {
-        // Find all potential locker elements
-        const selectors = [
-          'body > div:not(#root)',
-          'iframe[src*="locker"]',
-          'iframe[src*="offer"]',
-          'iframe[src*="cloudfront"]',
-          '[id*="locker"]',
-          '[class*="locker"]',
-          '[id*="offer"]',
-          '[class*="offer"]'
-        ];
-
-        selectors.forEach(selector => {
-          try {
-            const elements = document.querySelectorAll(selector);
-            elements.forEach(el => {
-              const style = window.getComputedStyle(el);
-              // Only center if it's positioned fixed or absolute
-              if (style.position === 'fixed' || style.position === 'absolute') {
-                if (el.tagName === 'IFRAME') {
-                  el.style.position = 'fixed';
-                  el.style.top = '50%';
-                  el.style.left = '50%';
-                  el.style.transform = 'translate(-50%, -50%)';
-                  el.style.zIndex = '999999';
-                } else {
-                  // For div containers, center them
-                  const rect = el.getBoundingClientRect();
-                  if (rect.width > 0 && rect.height > 0) {
-                    el.style.position = 'fixed';
-                    el.style.top = '50%';
-                    el.style.left = '50%';
-                    el.style.transform = 'translate(-50%, -50%)';
-                    el.style.zIndex = '999999';
-                  }
-                }
-              }
-            });
-          } catch (e) {
-            // Ignore selector errors
-          }
-        });
-      }
-
-      // Run immediately
-      centerLocker();
-
-      // Watch for new elements being added
-      const observer = new MutationObserver(() => {
-        centerLocker();
-      });
-
-      // Start observing
-      observer.observe(document.body, {
-        childList: true,
-        subtree: true,
-        attributes: true,
-        attributeFilter: ['style', 'class', 'id']
-      });
-
-      // Also run on window load
-      window.addEventListener('load', centerLocker);
-
-      // Run periodically to catch any missed elements
-      setInterval(centerLocker, 500);
-    })();
-  </script>
   <script type="module" src="/index.tsx"></script>
 </body>
 

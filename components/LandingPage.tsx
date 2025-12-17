@@ -27,7 +27,6 @@ import {
   CreditCard,
   Key,
   Ticket,
-  PartyPopper,
 } from "lucide-react";
 
 interface LandingPageProps {
@@ -150,7 +149,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
   const [stage, setStage] = useState<Stage>("idle");
   const [currentStepIndex, setCurrentStepIndex] = useState(0);
   const [progress, setProgress] = useState(0);
-  const [showToast, setShowToast] = useState(false);
   const [showPendingVerification, setShowPendingVerification] = useState(false);
 
   // Stats & Ticker
@@ -452,13 +450,9 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
 
   const handleVerificationSuccess = () => {
     setStage("verified");
-    playSound("success");
-    setShowToast(true);
-    setTimeout(() => {
-      // Convert allocatedPrize string to number for balance
-      const prizeNumber = parseFloat(allocatedPrize.replace(/[^0-9.]/g, '')) || 0;
-      onLogin(username, selectedGame, prizeNumber);
-    }, 2500); // 2.5s Delay to show toast
+    // Convert allocatedPrize string to number for balance
+    const prizeNumber = parseFloat(allocatedPrize.replace(/[^0-9.]/g, '')) || 0;
+    onLogin(username, selectedGame, prizeNumber);
   };
 
   const handleFinalVerify = () => {
@@ -518,29 +512,6 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
         <div className="absolute bottom-[-10%] right-[-10%] w-[60%] h-[60%] bg-cyan-900/10 rounded-full blur-[120px] animate-pulse"></div>
       </div>
 
-      {/* --- TOAST NOTIFICATION --- */}
-      {showToast && (
-        <div className="fixed top-12 left-1/2 -translate-x-1/2 z-[10000] animate-in slide-in-from-top-4 fade-in duration-500 w-[90%] max-w-sm">
-          <div className="bg-gradient-to-r from-green-900/90 to-emerald-900/90 backdrop-blur-md border border-green-500/50 rounded-xl p-4 shadow-[0_0_50px_rgba(34,197,94,0.3)] flex items-center gap-4">
-            <div className="w-12 h-12 rounded-full bg-green-500/20 flex items-center justify-center shrink-0">
-              <PartyPopper className="w-6 h-6 text-green-400 animate-bounce" />
-            </div>
-            <div>
-              <h4 className="text-white font-black uppercase text-sm tracking-wider">
-                Verification Complete!
-              </h4>
-              <p className="text-gray-300 text-xs mt-0.5">
-                Welcome,{" "}
-                <span className="text-white font-bold">{username}</span>.
-                <br />
-                Accessing{" "}
-                <span className="text-green-400 font-bold">{selectedGame}</span>
-                ...
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
 
       {/* --- PENDING VERIFICATION TOAST (Bottom) - Stays until locker completes and page closes --- */}
       {showPendingVerification && (
